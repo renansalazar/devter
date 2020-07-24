@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import AppLayout from "../../components/AppLayout";
 
-export default function Timeline() {
+export default function Timeline({userName}) {
     return (
         <AppLayout>
             <Link href="/">
@@ -10,8 +10,12 @@ export default function Timeline() {
                 </a>
             </Link>
             <h1>
-                HOla
+                Timeline de {userName}
             </h1>
         </AppLayout>
     )
+}
+
+Timeline.getInitialProps =  () => {
+    return  fetch('http://localhost:3000/api/hello').then((res)=>res.json())
 }
